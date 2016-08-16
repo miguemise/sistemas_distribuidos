@@ -1,1 +1,97 @@
-Prueba
+ESCUELA SUPERIOR POLITÉCNICA DEL LITORAL
+FACULTAD DE INGENIERÍA EN ELECTRICIDAD Y COMPUTACIÓN
+
+Sistemas Distribuidos
+
+Proyecto Final 
+
+Estudiantes:
+Esteban Muñoz Guevara
+(edmunoz@espol.edu.ec)
+Evelyn González González
+(evengonz@espol.edu.ec)
+Miguel Angel Mise
+(mimise@espol.edu.ec)
+Marcelo Sanchez
+
+Profesora
+Ph.D Cristina Abad Robalino
+(cabadr@espol.edu.ec)
+
+I Término, Año Lectivo 2016-2017
+
+
+SISTEMAS DISTRIBUIDOS
+
+Descripción del problema
+    
+ 	Se implementó una plataforma que almacena las facturas electrónicas que generan diferentes empresas por ejemplo mi comisariato,  tia, supermaxi, etc la cual contendrá millones de registros por lo cual se pretende implementar un sistema distribuido que permita hacer la consulta de una manera eficiente y rápida para el usuario final.
+
+
+Middleware
+	Se utilizó ActiveMQ ya que ofrece ventajas significativas respecto a los complejos servicios de administración de cola de mensajes y a los servicios de mensajería hospedados bajo licencia y se puede minimizar la carga administrativa que supone ejecutar y escalar un clúster de mensajería de gran disponibilidad y al ser open source se evitan los costos de pagar una licencia se dispone de una gran comunidad que contribuye con ayuda voluntaria.    
+
+	Persistencia de colas de mensajes en base de datos con JDBC: ActiveMQ tiene soporte para poder almacenar mensajes en la mayoría de bases de datos. 
+
+
+Implementación
+
+	Este aplicación permite la consulta de las facturas de un determinado cliente, esta consulta es con su id o Número de factura. La aplicación cuenta con un elevado número de usuarios almacenados en una base de datos relacional MySQL, evaluaremos la actividad del usuario para saber cómo interactúa con la aplicación y conseguir que nuestro sistema sea flexible y minimice el tiempo de respuesta. Para implementar  hacemos uso de ActiveMQ. 
+	Cada vez que la aplicación detecte una acción de un usuario como “Consulta por Nº Factura” es enviado un mensaje a nuestro intermediario de mensajes con la información de dicha acción.
+
+
+Instalación del Middleware
+
+Para la Instalación de ActiveMQ seguimos los pasos descritos a continuación:
+a. Nos descargamos archivos apache-activemq-5.9.0 (se encuentra en la ruta del github de nuestro proyecto los archivos descargados) del  link: http://activemq.apache.org/download.html
+b. Una vez descardos descomprimimos la distribución en el directorio deseado. Para entornos en Ubuntu lo hicimos con el siguiente comando: tar zxvf apache-activemq-5.9.0-bin.tar.gz
+c. Una vez descomprimidos los archivos procedemos a darle permisos: chmod 755 activemq
+d. Arrancamos Apache ActiveMQ de la siguiente forma: [/home/activemq/apache-activemq-5.9.0-bin/opt/apache-activemq-5.9.0/bin]/bin/activemq start
+A continuación mostramos SCREENSHOT de la instalacion de Active MQ
+
+e. Accedemos a la consola de administración en http://localhost:8161/admin/
+f. Creación de la Cola de mensajes en ActiveMQ
+Instalación de XAMPP (LAMPP) en Ubuntu -SERVIDOR
+a.- Descargamos el paquete de instalación de la pagina oficial link: https://www.apachefriends.org/es/index.html
+b.- Damos permisos de ejecución al archivo de instalación con el comando: sudo chmod +x xampp-linux-x64-5.6.8-0-installer.run
+c.- Iniciamos la instlación con el siguiente comando: sudo ./xampp-linux-x64-5.6.8-0-installer.run
+d.- Muestra una ventana de instalación, damos next y finalmente click en finish
+
+
+
+
+
+
+
+
+e.- Para que muestre el panel de control, ejecutamos el siguiente comando: 
+sudo apt-get install python-glade2 y luego sudo /opt/lampp/share/xampp-control-panel/xampp-control-panel
+ 
+f.- Para empezar a utilizar el servicio XAMPP usamos el comando: sudo /opt/lampp/lampp start
+
+
+
+g.- Para nuestra base de datos usamos el servicio MYSQL en Xampp
+
+Instalación de Laravel 5.0 – CLIENTE
+a.- Descargamos e instalamos composer , comando: sudo mv composer.phar /usr/local/bin/composer.
+Mostramos un print de la instalación
+
+
+b.- Instalamos un archivo de prueba Laravel, con el comando composer create-project laravel/laravel SISTEMASDISTRIBUIDOS, y le damos permisos con el comando chmod 765 
+
+Pantalla de login en LARAVEL
+
+Pantalla de consulta en LARAVEL
+
+Pantalla de consulta con filtros en LARAVEL
+
+
+
+
+REFERENCIAS:
+
+http://www.linuxsc.net/the-prog/6130-instalacion-de-laravel-traves
+https://www.adictosaltrabajo.com/tutoriales/active-mq/
+http://www.cristalab.com/tutoriales/configurar-base-de-datos-y-crear-tablas-con-laravel-c111394l/
+
